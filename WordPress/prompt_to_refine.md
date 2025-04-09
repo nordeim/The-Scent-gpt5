@@ -1,6 +1,6 @@
 You will carefully study / review the attached files, then validate the content with careful consideration and delibration, verify the information with extensive and careful web searches, then create an updated detailed guide named "Custom Theme Package Development and Deployment Guide (updated).md"
 
-Use the following thought process to validate the attached sample guides and then create the updated refined guide in markdown format:
+You can use the following methodology / approach as your guide to validate the attached documents and then create the updated refined guide in markdown format:
 
 1. Initial Analysis of Current Document:
 - The attached documents are a collection of WordPress theme development and deployment guides

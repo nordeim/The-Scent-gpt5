@@ -1,8 +1,8 @@
-Now let's design a full e-commerce platform for "The Scent" using the Apache2 + PHP + MySQL stack, building upon the visually stunning landing page concept.
+Now create a full e-commerce platform for "The Scent" using the Apache2 + PHP + MySQL stack, building upon the visually stunning landing page concept.
 
 **1. Core Requirements for "The Scent" E-commerce Platform:**
 
-Based on your business description and the typical needs of an online store selling physical products like essential oils and soaps, the platform must include:
+Based on the business description and the typical needs of an online store selling physical products like essential oils and soaps, the platform must include:
 
 **A. Frontend (Customer-Facing Interface):**
 

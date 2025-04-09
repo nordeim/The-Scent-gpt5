@@ -308,3 +308,10 @@ Here's a breakdown of the thought process to generate the PrestaShop theme file 
     *   Use PrestaShop variables where appropriate (e.g., `{$shop.name}`, `{$urls.pages.cart}`, `{$urls.pages.my_account}`).
 
 9.  **Structure the Output:** Present the file structure clearly using a tree format. Then provide the content for each key file (`theme.yml`, `layout-full-width.tpl`, `_partials/head.tpl`, `_partials/header.tpl`, `_partials/footer.tpl`, `index.tpl`, `assets/css/custom.css`, `assets/js/custom.js`), explaining the adaptations made.
+
+---
+https://drive.google.com/file/d/13igRY4D5DOVT6UR9lYnJgR2DOS5xCfu7/view?usp=sharing  
+https://drive.google.com/file/d/1AYEccQgzlka5JsdP8MOuN2fJ_yEsBRR9/view?usp=sharing  
+https://drive.google.com/file/d/1I-0ma0FxV4oHroJg1OY6wfB8w6mIpedu/view?usp=sharing  
+https://drive.google.com/file/d/1PZiQEPCf4nVbXU_agnsp6xSE5SJg4BEY/view?usp=sharing  
+https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221ZF6moOjXxscHHn6-GlDlTFEiWE06C28S%22%5D,%22action%22:%22open%22,%22userId%22:%22103961307342447084491%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing

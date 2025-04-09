@@ -32,3 +32,6 @@ C. Technical Updates:
 - Validated code examples 
 
 Now proceed to create an updated version of the guide with improvements and additional sections.
+
+---
+https://github.com/copilot/share/ca705204-0904-8051-9902-ec49846340b3

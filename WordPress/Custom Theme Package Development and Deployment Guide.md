@@ -287,12 +287,7 @@ add_action('init', 'custom_theme_register_post_types');
 - [Theme Security Guide](https://wordpress.org/documentation/article/hardening-wordpress/)
 
 ---
-
-🔄 Last Updated: 2025-04-09
-📝 Version: 2.0.0
-
----
-This updated guide includes:
+This [updated guide](https://github.com/copilot/share/ca705204-0904-8051-9902-ec49846340b3) includes:
 1. ✅ Modernized structure and organization
 2. ✅ Enhanced security considerations
 3. ✅ Comprehensive code examples

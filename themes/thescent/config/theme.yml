@@ -25,8 +25,14 @@ assets:
   use_parent_assets: false
   css:
     all:
+      - id: theme-core-css
+        path: assets/css/theme.css
+        media: all
+        priority: 10
       - id: theme-custom-css
         path: assets/css/custom.css
+        media: all
+        priority: 20
   js:
     all:
       - id: theme-custom-js

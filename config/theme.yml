@@ -1,0 +1,83 @@
+name: thescent
+display_name: The Scent Theme
+version: 1.0.0
+author:
+  name: "The Scent"
+  email: ""
+  url: ""
+
+meta:
+  compatibility:
+    from: 1.7.7.0
+    to: ~
+
+global_settings:
+  hooks:
+    modules_to_hook:
+      displayNavFullWidth:
+        - ps_mainmenu
+      displayTop:
+        - ps_customersignin
+        - ps_searchbar
+      displayHeader:
+        - ps_shoppingcart
+      displayHome:
+        - ps_featuredproducts
+      displayFooter:
+        - ps_linklist
+        - ps_contactinfo
+        - ps_customeraccountlinks
+      displayFooterBefore:
+        - ps_emailsubscription
+
+  image_types:
+    cart_default:
+      width: 125
+      height: 125
+      scope: [products]
+    home_default:
+      width: 250
+      height: 250
+      scope: [products]
+    medium_default:
+      width: 452
+      height: 452
+      scope: [products]
+    large_default:
+      width: 800
+      height: 800
+      scope: [products]
+
+assets:
+  css:
+    all:
+      - id: theme-core-css
+        path: assets/css/theme.css
+        media: all
+        priority: 10
+      - id: theme-custom-css
+        path: assets/css/custom.css
+        media: all
+        priority: 20
+  js:
+    all:
+      - id: theme-core-js
+        path: assets/js/theme.js
+        priority: 100
+        position: bottom
+      - id: theme-custom-js
+        path: assets/js/custom.js
+        priority: 200
+        position: bottom
+
+dependencies:
+  modules:
+    - ps_mainmenu
+    - ps_featuredproducts
+    - ps_emailsubscription
+    - ps_shoppingcart
+    - ps_customersignin
+    - ps_searchbar
+    - ps_linklist
+    - ps_contactinfo
+    - ps_customeraccountlinks

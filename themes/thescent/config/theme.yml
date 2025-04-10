@@ -39,6 +39,10 @@ assets:
         path: assets/js/custom.js
         priority: 200
         position: bottom
+      - id: theme-core-js
+        path: assets/js/theme.js
+        priority: 100
+        position: bottom
 
 global_settings:
   hooks:

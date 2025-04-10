@@ -19,3 +19,6 @@ yes, please proceed to complete all your suggested improvements in your list of 
 ---
 you have done an awesome job so far! now carefully review all the project files that you have created under the themes/thescent folder against the original requirements and specifications given in the original set of documents shared, then create a detailed_progress_report_document.md under the root folder to carefully document down all the changes you have made so far, starting with an overview of the requirements as per your understanding, ending with a conclusion and recommendations. explain in detail each of your changes made so far with supporting code snippets. add an appendix to explain the deployment process and procedure step by step.
 
+---
+you have done an awesome job so far! now carefully review your design as specified in your newly created technical design specification document versus the originally shared design specifications and details documents, then create a complete MySQL database schema design for the newly created project in markdown format with file name "complete_project_database_schema_design.md" and also create a MySQL script to create such a database schema from scratch, create the script as file "create_thescent_database.sql".
+

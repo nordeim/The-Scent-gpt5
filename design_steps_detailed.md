@@ -1,4 +1,4 @@
-Okay, now create the initial project file structure and the core files for your custom PrestaShop theme, "The Scent," based on the provided HTML and CSS.
+Create the initial project file structure and the core files for the custom PrestaShop theme, "The Scent," based on the provided HTML and CSS files, 'improved landing page.html' and style.css.
 
 **Assumptions:**
 

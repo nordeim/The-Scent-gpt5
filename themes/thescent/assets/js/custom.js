@@ -138,26 +138,18 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchToggle = document.querySelector('.search-toggle');
   const searchOverlay = document.querySelector('.search-overlay');
   const closeSearch = document.querySelector('.close-search');
+  const searchInput = document.querySelector('.search-input');
 
-  if (searchToggle && searchOverlay && closeSearch) {
-    searchToggle.addEventListener('click', (e) => {
-      e.preventDefault();
+  if (searchToggle && searchOverlay) {
+    searchToggle.addEventListener('click', () => {
       searchOverlay.classList.add('active');
-      searchOverlay.querySelector('input').focus();
+      searchInput.focus();
       document.body.style.overflow = 'hidden';
     });
 
     closeSearch.addEventListener('click', () => {
       searchOverlay.classList.remove('active');
       document.body.style.overflow = '';
-    });
-
-    // Close on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
-        searchOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
     });
   }
 
@@ -184,25 +176,21 @@ document.addEventListener('DOMContentLoaded', function() {
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = newsletterForm.querySelector('input[type="email"]').value;
-      const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+      const button = newsletterForm.querySelector('button');
+      const email = newsletterForm.querySelector('input[type="email"]');
       
-      // Add loading state
-      submitBtn.classList.add('loading');
+      button.classList.add('loading');
       
       try {
-        // Here you would normally make an API call to PrestaShop's newsletter subscription endpoint
-        // For demo, simulate API call
+        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1000));
         
-        // Show success message
-        showFormMessage(newsletterForm, 'Successfully subscribed!', 'success');
-        newsletterForm.reset();
+        showMessage('Successfully subscribed!', 'success');
+        email.value = '';
       } catch (error) {
-        // Show error message
-        showFormMessage(newsletterForm, 'An error occurred. Please try again.', 'error');
+        showMessage('An error occurred. Please try again.', 'error');
       } finally {
-        submitBtn.classList.remove('loading');
+        button.classList.remove('loading');
       }
     });
   }
@@ -223,6 +211,18 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
       messageDiv.remove();
     }, 5000);
+  }
+
+  // Helper Functions
+  function showMessage(message, type) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('form-message', `form-${type}`);
+    messageDiv.textContent = message;
+    
+    const container = document.querySelector('.newsletter-content');
+    container.appendChild(messageDiv);
+    
+    setTimeout(() => messageDiv.remove(), 3000);
   }
 
   // Mobile Menu Toggle
@@ -260,6 +260,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     lastScroll = currentScroll;
+  });
+
+  // Loading States
+  document.addEventListener('DOMContentLoaded', () => {
+    // Add loading skeletons
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.classList.remove('skeleton');
+    });
   });
 
 });

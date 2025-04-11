@@ -19,3 +19,26 @@
     {/foreach}
   </script>
 {/if}
+
+{* Core JavaScript *}
+<script src="{$urls.theme_assets}js/custom.js"></script>
+
+{* Additional Components *}
+<script>
+  // Theme Configuration
+  window.themeConfig = {
+    animations: true,
+    searchOverlay: true
+  };
+  
+  // PrestaShop Configuration
+  var prestashop = {
+    cart: {
+      products: {$cart.products|json_encode nofilter},
+      totals: {$cart.totals|json_encode nofilter},
+      count: {$cart.products_count}
+    }
+  };
+</script>
+
+{* Any additional scripts or configurations *}

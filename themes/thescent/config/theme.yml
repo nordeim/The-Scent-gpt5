@@ -1,17 +1,16 @@
 name: thescent
-display_name: The Scent Theme
+display_name: The Scent
 version: 1.0.0
 author:
   name: "The Scent"
-  email: ""
-  url: ""
+  email: "contact@thescent.com"
 
 parent: classic
 template_dir: templates
 
 meta:
   compatibility:
-    from: 1.7.7.0
+    from: 1.7.0.0
     to: ~
   available_layouts:
     layout-full-width:
@@ -28,16 +27,24 @@ assets:
   use_parent_assets: false  # Important: disable parent theme assets
   css:
     all:
-      - id: theme-main-style
+      - id: theme-core
+        path: assets/css/theme.css
+        media: all
+        priority: 50
+      - id: theme-custom
         path: assets/css/custom.css
         media: all
         priority: 100
   js:
     all:
-      - id: theme-main-js
-        path: assets/js/custom.js
+      - id: theme-core
+        path: assets/js/theme.js
+        priority: 50
         position: bottom
+      - id: theme-custom  
+        path: assets/js/custom.js
         priority: 100
+        position: bottom
       
   # Add required fonts and icons
   external_css:
@@ -47,13 +54,29 @@ assets:
       href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 
 global_settings:
+  configuration:
+    PS_IMAGE_QUALITY: png
+  modules:
+    to_enable:
+      - ps_mainmenu
+      - ps_searchbar
+      - ps_shoppingcart
+      - ps_customersignin
+      - ps_emailsubscription
+    to_disable:
+      - ps_imageslider
+      - ps_banner
+
   hooks:
     modules_to_hook:
       displayNavFullWidth:
         - ps_mainmenu
+        - ps_searchbar
       displayTop:
         - ps_mainmenu
         - ps_searchbar
+        - ps_shoppingcart
+        - ps_customersignin
       displayHeader:
         - ps_shoppingcart
       displayHome:
@@ -62,7 +85,10 @@ global_settings:
         - ps_linklist
         - ps_customeraccountlinks
         - ps_contactinfo
+        - ps_socialfollow
       displayNav1:
+        - ps_languageselector
+        - ps_currencyselector
         - ps_contactinfo
       displayNav2:
         - ps_customersignin
@@ -73,6 +99,12 @@ global_settings:
         - ps_facetedsearch
       displayFooterAfter:
         - ps_socialfollow
+      displaySearch:
+        - ps_searchbar
+      displayCartExtraProductActions:
+        - ps_shoppingcart
+      displayCustomerAccount:
+        - ps_customersignin
       
   image_types:
     cart_default:
@@ -111,9 +143,26 @@ global_settings:
       width: 800
       height: 600
       scope: [categories]
+    quick_view:
+      width: 400
+      height: 400
+      scope: [products]
+    cart_preview:
+      width: 80
+      height: 80
+      scope: [products]
+    search_preview:
+      width: 50
+      height: 50
+      scope: [products]
 
 theme_settings:
   default_layout: layout-full-width
+  layouts:
+    index: layout-full-width
+    category: layout-left-column
+    product: layout-left-column
+    contact: layout-full-width
 
 dependencies:
   modules:

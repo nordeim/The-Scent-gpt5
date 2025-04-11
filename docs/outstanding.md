@@ -1,4 +1,4 @@
-you didn't update custom.css, though you mentioned the following:
+in your previous enhancemnt run, you didn't update custom.css, though you last mentioned the following:
 
 systematically update the CSS to match our recent module template changes.
 

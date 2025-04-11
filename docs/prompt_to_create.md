@@ -47,6 +47,16 @@ please carefully and systematically review all the existing theme files under th
 remember to think deeply and systematically via long chain of thoughts to thoroughly and carefully explore the best possible implementation option to implement your proposed changes, then come up with a detailed action plan before executing according to the plan thus created step-by-step cautiously.
 
 ---
+the current landing page for the thescent theme looks ugly and not matching the UI appearance of the desired landing page provided as the project requirement  which is to create a custom PrestaShop theme based on the desired landing page: 'improved landing page.html' and style.css.
+
+please carefully and systematically review all the existing theme files under the themes/thescent folder against the original specifications and requirements to identify gaps/improvements needed.
+
+remember to think deeply and systematically via long chain of thoughts to thoroughly and carefully explore the best possible implementation option to implement your proposed changes, then come up with a detailed action plan before executing according to the plan thus created step-by-step cautiously.
+
+---
+please continue with your next steps. keep in mind the original requirement to mimic the UI appearance of the desiged landing page provided: 'improved landing page.html' and style.css.
+
+---
 please carefully and systematically review all the existing theme files under the themes/thescent folder against the original specifications and requirements to identify gaps/improvements needed.
 
 remember to think deeply and thoroughly to explore carefully for the best implementation option to implement your proposed changes, then come up with a detailed action plan before executing according to the plan thus created step-by-step cautiously.

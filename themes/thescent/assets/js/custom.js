@@ -133,4 +133,133 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize animations
   animateOnScroll();
+
+  // Search Overlay
+  const searchToggle = document.querySelector('.search-toggle');
+  const searchOverlay = document.querySelector('.search-overlay');
+  const closeSearch = document.querySelector('.close-search');
+
+  if (searchToggle && searchOverlay && closeSearch) {
+    searchToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      searchOverlay.classList.add('active');
+      searchOverlay.querySelector('input').focus();
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeSearch.addEventListener('click', () => {
+      searchOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+        searchOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // Cart Popup
+  const cartToggle = document.querySelector('.cart-toggle');
+  const cartPopup = document.querySelector('.cart-popup');
+
+  if (cartToggle && cartPopup) {
+    cartToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      cartPopup.classList.toggle('active');
+    });
+
+    // Close cart popup when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!cartPopup.contains(e.target) && !cartToggle.contains(e.target)) {
+        cartPopup.classList.remove('active');
+      }
+    });
+  }
+
+  // Form Validation
+  const newsletterForm = document.querySelector('.newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = newsletterForm.querySelector('input[type="email"]').value;
+      const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+      
+      // Add loading state
+      submitBtn.classList.add('loading');
+      
+      try {
+        // Here you would normally make an API call to PrestaShop's newsletter subscription endpoint
+        // For demo, simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Show success message
+        showFormMessage(newsletterForm, 'Successfully subscribed!', 'success');
+        newsletterForm.reset();
+      } catch (error) {
+        // Show error message
+        showFormMessage(newsletterForm, 'An error occurred. Please try again.', 'error');
+      } finally {
+        submitBtn.classList.remove('loading');
+      }
+    });
+  }
+
+  // Helper function to show form messages
+  function showFormMessage(form, message, type) {
+    const existingMessage = form.querySelector('.form-message');
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `form-message form-${type}`;
+    messageDiv.textContent = message;
+    form.insertAdjacentElement('afterend', messageDiv);
+
+    // Remove message after 5 seconds
+    setTimeout(() => {
+      messageDiv.remove();
+    }, 5000);
+  }
+
+  // Mobile Menu Toggle
+  const toggleButton = document.querySelector('.mobile-nav-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const mainHeader = document.querySelector('.main-header');
+
+  if (toggleButton && mobileNav && mainHeader) {
+    toggleButton.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+      mainHeader.classList.toggle('mobile-menu-active');
+      const icon = toggleButton.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
+  }
+
+  // Sticky Header
+  const header = document.querySelector('.main-header');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 50) {
+      header.classList.add('sticky');
+    } else {
+      header.classList.remove('sticky');
+    }
+
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      header.classList.add('hide');
+    } else {
+      header.classList.remove('hide');
+    }
+    
+    lastScroll = currentScroll;
+  });
+
 });

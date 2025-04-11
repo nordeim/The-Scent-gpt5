@@ -29,7 +29,7 @@
           <div id="content-wrapper" class="js-content-wrapper">
             {hook h="displayContentWrapperTop"}
             {block name='content'}
-              <p>Hello world! This is HTML5 Boilerplate.</p>
+              <p>Hello world! This is content!</p>
             {/block}
             {hook h="displayContentWrapperBottom"}
           </div>

@@ -323,4 +323,361 @@ document.addEventListener('DOMContentLoaded', function() {
     return new Promise((resolve) => setTimeout(resolve, 1000));
   }
 
+  // Live Search Implementation
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchOverlay = document.querySelector('.search-overlay');
+    const searchInput = document.querySelector('.search-input');
+    const searchResults = document.querySelector('.search-results');
+    const loadingIndicator = document.querySelector('.search-loading');
+    const noResultsMessage = document.querySelector('.search-no-results');
+    const categoryList = document.querySelector('.category-list');
+    const productList = document.querySelector('.product-list-mini');
+    
+    // Search toggle
+    document.querySelectorAll('.search-toggle').forEach(button => {
+      button.addEventListener('click', () => {
+        searchOverlay.classList.add('active');
+        searchInput.focus();
+      });
+    });
+
+    document.querySelector('.btn-close-search').addEventListener('click', () => {
+      searchOverlay.classList.remove('active');
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+        searchOverlay.classList.remove('active');
+      }
+    });
+
+    let searchTimeout;
+    const debounceDelay = 300;
+
+    searchInput.addEventListener('input', function(e) {
+      clearTimeout(searchTimeout);
+      const query = e.target.value.trim();
+
+      if (query.length < 2) {
+        resetSearch();
+        return;
+      }
+
+      searchTimeout = setTimeout(() => performSearch(query), debounceDelay);
+    });
+
+    function performSearch(query) {
+      showLoading();
+      
+      fetch(`${prestashop.urls.base_url}module/ps_searchbar/ajax?q=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+          hideLoading();
+          updateResults(data);
+        })
+        .catch(error => {
+          console.error('Search error:', error);
+          hideLoading();
+          showError();
+        });
+    }
+
+    function updateResults(data) {
+      if (!data.products.length && !data.categories.length) {
+        showNoResults();
+        return;
+      }
+
+      // Update categories
+      categoryList.innerHTML = data.categories.map(category => `
+        <li class="category-item">
+          <a href="${category.url}" class="category-link">
+            <span>${category.name}</span>
+            <span class="product-count">${category.product_count}</span>
+          </a>
+        </li>
+      `).join('');
+
+      // Update products
+      productList.innerHTML = data.products.map(product => `
+        <div class="col-6 col-md-4">
+          <article class="product-miniature">
+            <a href="${product.url}" class="product-link">
+              <div class="product-image">
+                <img src="${product.cover_image}" alt="${product.name}" loading="lazy">
+              </div>
+              <div class="product-meta">
+                <h3 class="product-title">${product.name}</h3>
+                <div class="product-price">${product.price}</div>
+              </div>
+            </a>
+          </article>
+        </div>
+      `).join('');
+
+      showResults();
+    }
+
+    function showLoading() {
+      loadingIndicator.classList.remove('d-none');
+      noResultsMessage.classList.add('d-none');
+      categoryList.innerHTML = '';
+      productList.innerHTML = '';
+    }
+
+    function hideLoading() {
+      loadingIndicator.classList.add('d-none');
+    }
+
+    function showNoResults() {
+      noResultsMessage.classList.remove('d-none');
+      categoryList.innerHTML = '';
+      productList.innerHTML = '';
+    }
+
+    function showResults() {
+      noResultsMessage.classList.add('d-none');
+    }
+
+    function showError() {
+      // Could enhance this with a proper error message display
+      showNoResults();
+    }
+
+    function resetSearch() {
+      categoryList.innerHTML = '';
+      productList.innerHTML = '';
+      noResultsMessage.classList.add('d-none');
+    }
+  });
+
+  // Live Search Implementation
+  class LiveSearch {
+    constructor() {
+      this.overlay = document.getElementById('search-overlay');
+      this.form = document.getElementById('live-search-form');
+      this.input = this.form?.querySelector('.search-input');
+      this.results = document.querySelector('.search-results');
+      this.closeBtn = document.querySelector('.btn-close-search');
+      this.loadingEl = document.querySelector('.search-loading');
+      this.noResultsEl = document.querySelector('.search-no-results');
+      this.productList = document.querySelector('.product-list-mini');
+      this.categoryList = document.querySelector('.category-list');
+      this.suggestionList = document.querySelector('.suggestion-list');
+      
+      this.searchDelay = 300;
+      this.minChars = 2;
+      this.searchTimeout = null;
+  
+      this.init();
+    }
+  
+    init() {
+      // Initialize search trigger buttons
+      document.querySelectorAll('[data-action="show-search"]').forEach(btn => {
+        btn.addEventListener('click', () => this.showOverlay());
+      });
+  
+      // Close button event
+      this.closeBtn?.addEventListener('click', () => this.hideOverlay());
+  
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
+          this.hideOverlay();
+        }
+      });
+  
+      // Input handler
+      this.input?.addEventListener('input', (e) => {
+        clearTimeout(this.searchTimeout);
+        const query = e.target.value.trim();
+  
+        if (query.length >= this.minChars) {
+          this.searchTimeout = setTimeout(() => {
+            this.performSearch(query);
+          }, this.searchDelay);
+        } else {
+          this.hideResults();
+        }
+      });
+  
+      // Form submit handler
+      this.form?.addEventListener('submit', (e) => {
+        const query = this.input.value.trim();
+        if (query.length < this.minChars) {
+          e.preventDefault();
+        }
+      });
+    }
+  
+    showOverlay() {
+      this.overlay.classList.add('active');
+      this.input?.focus();
+      document.body.style.overflow = 'hidden';
+    }
+  
+    hideOverlay() {
+      this.overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      this.input.value = '';
+      this.hideResults();
+    }
+  
+    showLoading() {
+      this.loadingEl.style.display = 'block';
+      this.noResultsEl.style.display = 'none';
+      this.results.style.display = 'block';
+    }
+  
+    hideLoading() {
+      this.loadingEl.style.display = 'none';
+    }
+  
+    async performSearch(query) {
+      this.showLoading();
+  
+      try {
+        const response = await fetch(`${prestashop.urls.base_url}module/ps_searchbar/ajax`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            s: query,
+            resultsPerPage: 8,
+            page: 1
+          })
+        });
+  
+        const data = await response.json();
+        this.hideLoading();
+        
+        if (data.products?.length > 0 || data.categories?.length > 0) {
+          this.displayResults(data);
+        } else {
+          this.showNoResults();
+        }
+      } catch (error) {
+        console.error('Search error:', error);
+        this.hideLoading();
+        this.showNoResults();
+      }
+    }
+  
+    displayResults(data) {
+      this.results.style.display = 'block';
+      this.noResultsEl.style.display = 'none';
+  
+      // Display products
+      this.productList.innerHTML = '';
+      const productTemplate = document.getElementById('search-product-template');
+      
+      data.products?.forEach(product => {
+        const clone = document.importNode(productTemplate.content, true);
+        const link = clone.querySelector('.product-link');
+        const image = clone.querySelector('img');
+        const title = clone.querySelector('.product-title');
+        const price = clone.querySelector('.product-price');
+  
+        link.href = product.url;
+        image.src = product.cover_image_url;
+        image.alt = product.name;
+        title.textContent = product.name;
+        price.textContent = product.price;
+  
+        this.productList.appendChild(clone);
+      });
+  
+      // Display categories
+      this.categoryList.innerHTML = '';
+      const categoryTemplate = document.getElementById('search-category-template');
+  
+      data.categories?.forEach(category => {
+        const clone = document.importNode(categoryTemplate.content, true);
+        const link = clone.querySelector('.category-link');
+        const name = clone.querySelector('.category-name');
+        const count = clone.querySelector('.product-count');
+  
+        link.href = category.url;
+        name.textContent = category.name;
+        count.textContent = `(${category.product_count})`;
+  
+        this.categoryList.appendChild(clone);
+      });
+    }
+  
+    showNoResults() {
+      this.results.style.display = 'block';
+      this.noResultsEl.style.display = 'block';
+      this.productList.innerHTML = '';
+      this.categoryList.innerHTML = '';
+    }
+  
+    hideResults() {
+      this.results.style.display = 'none';
+      this.noResultsEl.style.display = 'none';
+      this.loadingEl.style.display = 'none';
+    }
+  }
+  
+  // Initialize live search when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    new LiveSearch();
+  });
+  
+  // Theme configuration and initialization
+  window.themeConfig = window.themeConfig || {};
+  
+  // Initialize components when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  
+    // Initialize tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  
+    // Initialize popovers
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl);
+    });
+  
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('mobile-menu-active');
+      });
+    }
+  
+    // Add to cart animation
+    prestashop.on('updateCart', () => {
+      const cartButton = document.querySelector('.cart-preview');
+      if (cartButton) {
+        cartButton.classList.add('shake');
+        setTimeout(() => {
+          cartButton.classList.remove('shake');
+        }, 500);
+      }
+    });
+  });
 });

@@ -21,6 +21,22 @@
       <link rel="alternate" href="{$pageUrl}" hreflang="{$code}">
     {/foreach}
   {/block}
+  
+  {* Open Graph tags *}
+  <meta property="og:title" content="{$page.meta.title}">
+  <meta property="og:description" content="{$page.meta.description}">
+  <meta property="og:url" content="{$urls.current_url}">
+  <meta property="og:site_name" content="{$shop.name}">
+  {if isset($product) && $page.page_name == 'product'}
+    <meta property="og:type" content="product">
+    <meta property="og:price:amount" content="{$product.price_amount}">
+    <meta property="og:price:currency" content="{$currency.iso_code}">
+    {if isset($product.images) && $product.images|count > 0}
+      <meta property="og:image" content="{$product.images[0].large.url}">
+    {/if}
+  {else}
+    <meta property="og:type" content="website">
+  {/if}
 {/block}
 
 {block name='head_viewport'}
@@ -30,66 +46,34 @@
 {block name='head_icons'}
   <link rel="icon" type="image/vnd.microsoft.icon" href="{$shop.favicon}?{$shop.favicon_update_time}">
   <link rel="shortcut icon" type="image/x-icon" href="{$shop.favicon}?{$shop.favicon_update_time}">
-  {* Add Apple touch icons if needed *}
+  <link rel="apple-touch-icon" href="{$urls.img_ps_url}app-icon.png">
 {/block}
 
 {block name='stylesheets'}
-  {foreach $stylesheets.external as $stylesheet}
-    <link rel="stylesheet" href="{$stylesheet.uri}" type="text/css" media="{$stylesheet.media}">
-  {/foreach}
-  
-  {* Google Fonts *}
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  {* Font Awesome *}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-  {foreach $stylesheets.inline as $stylesheet}
-    <style>
-      {$stylesheet.content}
-    </style>
-  {/foreach}
+  {include file="_partials/stylesheets.tpl" stylesheets=$stylesheets}
 {/block}
 
 {block name='javascript_head'}
-  {foreach $javascript.head as $js}
-    <script src="{$js.uri}" {$js.attribute}></script>
-  {/foreach}
+  {include file="_partials/javascript.tpl" javascript=$javascript.head vars=$js_custom_vars}
 
-  {foreach $javascript.inline as $js}
-    <script>
-      {$js.content nofilter}
-    </script>
-  {/foreach}
+  {* Theme Configuration Object *}
+  <script>
+    window.themeConfig = {
+      animations: true,
+      searchOverlay: true,
+      cartType: 'offcanvas',
+      breakpoints: {
+        sm: 576,
+        md: 768,
+        lg: 992,
+        xl: 1200
+      }
+    };
+  </script>
 {/block}
 
 {block name='hook_header'}
   {$HOOK_HEADER nofilter}
 {/block}
 
-{block name='hook_extra'}
-  <meta property="og:title" content="{$page.meta.title}">
-  <meta property="og:description" content="{$page.meta.description}">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="{$shop.name}">
-  {if isset($product) && $page.page_name == 'product'}
-    <meta property="og:image" content="{$product.cover.large.url}">
-  {else}
-    <meta property="og:image" content="{$urls.shop_domain_url}{$shop.logo}">
-  {/if}
-  
-  {* Add structured data if needed *}
-  {if $page.page_name == 'index'}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "{$shop.name}",
-      "url": "{$urls.shop_domain_url}",
-      "logo": "{$urls.shop_domain_url}{$shop.logo}"
-    }
-    </script>
-  {/if}
-{/block}
+{block name='hook_extra'}{/block}

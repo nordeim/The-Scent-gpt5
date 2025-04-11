@@ -4,7 +4,7 @@
   {block name='page_header_container'}
     <header class="page-header">
       {block name='page_header'}
-        <h1>{block name='page_title'}{/block}</h1>
+        <h1>{block name='page_title'}{/block}
       {/block}
     </header>
   {/block}

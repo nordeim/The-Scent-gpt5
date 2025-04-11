@@ -80,6 +80,13 @@ use the remaining attached files, design_steps_detailed.md, design_specification
 after carefully studying all these files, compare them against the current project partially implemented in the themes/thescent subfolder (under project root folder) before thinking deeply and thoroughly to plan and explore the best implementation option, then proceed to execute step by step according to your plan.
 
 ---
+Your task is spelled out in the attached task_specification.md file. After understanding your task, carefully review the attached design_planning_steps.md, design_steps_detailed.md and design_specification_document.md files to understand the specifications and requirements for this project. you are to create a custom PrestaShop theme that is based on the UI appearance of the sample landing page attached: 'improved landing page.html' and style.css.
+
+Before planning your actions, carefully review all the current project files in the themes/thescent folder to understand the current state of this project. then compare your understanding of the current project state (from the review of the actual files) against the checkpoint documents produced by the previous build run: current_landing_page.html, progress_update_document.md and current_design_specification_document.md files.
+
+With a complete understanding of the project requirements and the given specifications, as well as a complete understanding of the current state of the project (based on the actual project files under the themes/thescent folder), think deeply and systematically to explore thoroughly for the best implementation option to complete your task. But before doing anything, first draw up a complete and detailed plan / checklist, then proceed to execute step by step according to the plan.
+
+---
 please carefully review your changes and also review the current state of the project files in the themes/thescent folder and compare all these (current state) against the sample (improved) landing page design and the design specifications given in the design documents shared earlier, then think deeply and systematically to explore carefully the progress and changes made so far and document all these findings in a markdown format with filename "progress_update_document.md" under the project root folder. be very precise and detailed in documenting the details of progress and changes made so far.
 
 please carefully and systematically review all the existing theme files under the themes/thescent folder against the original specifications and requirements to identify gaps/improvements needed. add any coding and logic errors as suggestions for improving in the progress_update_document.md file.

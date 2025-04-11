@@ -3,14 +3,15 @@ display_name: The Scent
 version: 1.0.0
 author:
   name: "The Scent"
-  email: "contact@thescent.com"
+  email: ""
+  url: ""
 
 parent: classic
 template_dir: templates
 
 meta:
   compatibility:
-    from: 1.7.0.0
+    from: 1.7.7.0
     to: ~
   available_layouts:
     layout-full-width:
@@ -24,9 +25,13 @@ meta:
       description: A small right column ideal for filters or banners
 
 assets:
-  use_parent_assets: false  # Important: disable parent theme assets
+  use_parent_assets: false
   css:
     all:
+      - id: google-fonts
+        path: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap"
+      - id: font-awesome
+        path: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       - id: theme-core
         path: assets/css/theme.css
         media: all
@@ -41,17 +46,10 @@ assets:
         path: assets/js/theme.js
         priority: 50
         position: bottom
-      - id: theme-custom  
+      - id: theme-custom
         path: assets/js/custom.js
         priority: 100
         position: bottom
-      
-  # Add required fonts and icons
-  external_css:
-    - rel: stylesheet
-      href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&family=Raleway:wght@400;500;600&display=swap"
-    - rel: stylesheet
-      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 
 global_settings:
   configuration:
@@ -62,7 +60,14 @@ global_settings:
       - ps_searchbar
       - ps_shoppingcart
       - ps_customersignin
+      - ps_linklist
       - ps_emailsubscription
+      - ps_featuredproducts
+      - ts_testimonials
+      - ps_contactinfo
+      - ps_socialfollow
+      - ps_facetedsearch
+      - blockreassurance
     to_disable:
       - ps_imageslider
       - ps_banner
@@ -71,41 +76,38 @@ global_settings:
     modules_to_hook:
       displayNavFullWidth:
         - ps_mainmenu
-        - ps_searchbar
       displayTop:
         - ps_mainmenu
         - ps_searchbar
         - ps_shoppingcart
         - ps_customersignin
-      displayHeader:
-        - ps_shoppingcart
+      displayNav1:
+        - ps_contactinfo
+        - ps_languageselector
+        - ps_currencyselector
+      displayNav2:
+        - ps_customersignin
       displayHome:
         - ps_featuredproducts
+      displayTestimonials:
+        - ts_testimonials
+      displayFooterBefore:
+        - ps_emailsubscription
+        - ps_socialfollow
       displayFooter:
         - ps_linklist
         - ps_customeraccountlinks
         - ps_contactinfo
-        - ps_socialfollow
-      displayNav1:
-        - ps_languageselector
-        - ps_currencyselector
-        - ps_contactinfo
-      displayNav2:
-        - ps_customersignin
-      displayFooterBefore:
-        - ps_emailsubscription
+      displaySearch:
+        - ps_searchbar
       displayLeftColumn:
         - ps_categorytree
         - ps_facetedsearch
-      displayFooterAfter:
-        - ps_socialfollow
-      displaySearch:
-        - ps_searchbar
-      displayCartExtraProductActions:
-        - ps_shoppingcart
-      displayCustomerAccount:
-        - ps_customersignin
-      
+      displayProductAdditionalInfo:
+        - ps_sharebuttons
+      displayReassurance:
+        - blockreassurance
+
   image_types:
     cart_default:
       width: 125
@@ -127,14 +129,6 @@ global_settings:
       width: 800
       height: 800
       scope: [products, manufacturers, suppliers]
-    category_default:
-      width: 141
-      height: 180
-      scope: [categories]
-    stores_default:
-      width: 170
-      height: 115
-      scope: [stores]
     hero_default:
       width: 1920
       height: 1080
@@ -143,14 +137,6 @@ global_settings:
       width: 800
       height: 600
       scope: [categories]
-    quick_view:
-      width: 400
-      height: 400
-      scope: [products]
-    cart_preview:
-      width: 80
-      height: 80
-      scope: [products]
     search_preview:
       width: 50
       height: 50
@@ -163,6 +149,9 @@ theme_settings:
     category: layout-left-column
     product: layout-left-column
     contact: layout-full-width
+    best-sales: layout-left-column
+    new-products: layout-left-column
+    prices-drop: layout-left-column
 
 dependencies:
   modules:
@@ -178,3 +167,31 @@ dependencies:
     - ps_socialfollow
     - ps_categorytree
     - ps_facetedsearch
+    - ts_testimonials
+    - blockreassurance
+    - ps_sharebuttons
+  fonts:
+    - family: "Cormorant Garamond:wght@400;500;600;700"
+      provider: "google"
+    - family: "Montserrat:wght@300;400;500;600"
+      provider: "google"
+    - family: "Raleway:wght@300;400;500;600"
+      provider: "google"
+  js:
+    - id: jquery
+      path: assets/js/jquery.min.js
+    - id: popper
+      path: assets/js/popper.min.js
+    - id: bootstrap
+      path: assets/js/bootstrap.min.js
+    - id: theme
+      path: assets/js/theme.js
+  css:
+    - id: fontawesome
+      path: assets/css/fontawesome.min.css
+    - id: bootstrap
+      path: assets/css/bootstrap.min.css
+    - id: theme
+      path: assets/css/theme.css
+    - id: custom
+      path: assets/css/custom.css

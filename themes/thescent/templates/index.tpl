@@ -1,69 +1,88 @@
 {extends file='page.tpl'}
 
-{block name='page_content'}
-  {* Hero Section *}
-  <section id="hero" class="hero-section">
-    <div class="hero-media">
-      <video autoplay muted loop playsinline>
-        <source src="{$urls.theme_assets}videos/hero-bg.mp4" type="video/mp4">
-        <img src="{$urls.theme_assets}img/hero-bg.jpg" alt="Calming Nature">
-      </video>
-    </div>
-    <div class="container hero-content">
-      <h1>{l s='Find Your Moment of Calm' d='Shop.Theme.Homepage'}</h1>
-      <p>{l s='Experience premium, natural aromatherapy crafted to enhance well-being and restore balance.' d='Shop.Theme.Homepage'}</p>
-      <a href="{$urls.pages.products}" class="btn btn-primary">{l s='Explore Our Collections' d='Shop.Theme.Homepage'}</a>
-    </div>
-  </section>
-
-  {* About Section *}
-  <section id="about" class="about-section">
-    <div class="container about-container">
-      <div class="about-image">
-        <img src="{$urls.theme_assets}img/about.jpg" alt="Natural Ingredients">
+{block name='page_content_container'}
+  <section class="page-home">
+    {* Hero Section *}
+    <div class="hero-section">
+      <div class="hero-media">
+        <video autoplay muted loop playsinline poster="{$urls.img_ps_url}hero-poster.jpg">
+          <source src="{$urls.img_ps_url}hero-video.mp4" type="video/mp4">
+        </video>
       </div>
-      <div class="about-text">
-        <h2>{l s='Rooted in Nature, Crafted with Care' d='Shop.Theme.Homepage'}</h2>
-        <p>{l s='At The Scent, we harness the power of nature to nurture your mental and physical well-being. Our high-quality, sustainably sourced ingredients are transformed into exquisite aromatherapy products that help you reclaim balance and serenity.' d='Shop.Theme.Homepage'}</p>
-        <a href="{$urls.pages.cms['4']}" class="btn btn-secondary">{l s='Learn Our Story' d='Shop.Theme.Homepage'}</a>
+      <div class="hero-content container">
+        <h1>{l s='Discover the Power of Natural Aromatherapy' d='Shop.Theme.Global'}</h1>
+        <p>{l s='Transform your space and elevate your well-being with our premium collection of essential oils and diffusers.' d='Shop.Theme.Global'}</p>
+        <div class="hero-buttons">
+          <a href="{$urls.pages.category}?id_category=2" class="btn btn-primary">
+            {l s='Shop Collection' d='Shop.Theme.Global'}
+          </a>
+          <a href="#about-section" class="btn btn-secondary">
+            {l s='Learn More' d='Shop.Theme.Global'}
+          </a>
+        </div>
       </div>
     </div>
-  </section>
 
-  {* Featured Products *}
-  <section id="products" class="products-section">
-    <div class="container">
-      <h2>{l s='Featured Collections' d='Shop.Theme.Catalog'}</h2>
-      {hook h='displayFeaturedProducts'}
-    </div>
-  </section>
-
-  {* Scent Finder *}
-  <section id="finder" class="finder-section">
-    <div class="container">
-      <h2>{l s='Discover Your Perfect Scent' d='Shop.Theme.Homepage'}</h2>
-      <p class="finder-subtitle">{l s='Tailor your aromatherapy experience to your mood and needs.' d='Shop.Theme.Homepage'}</p>
-      <div class="finder-grid">
-        {include file='module:scent_finder/views/templates/hook/finder-categories.tpl'}
+    {* About Section *}
+    <section id="about-section" class="about-section">
+      <div class="container about-container">
+        <div class="about-text">
+          <h2>{l s='Pure. Natural. Effective.' d='Shop.Theme.Global'}</h2>
+          <p>{l s='At The Scent, we believe in the transformative power of nature. Our carefully curated collection of essential oils is sourced from the finest natural ingredients, ensuring pure and potent aromatherapy experiences.' d='Shop.Theme.Global'}</p>
+          <a href="{$urls.pages.about}" class="btn btn-secondary">
+            {l s='Our Story' d='Shop.Theme.Global'}
+          </a>
+        </div>
+        <div class="about-image">
+          <img src="{$urls.img_ps_url}about-image.jpg" alt="{l s='About The Scent' d='Shop.Theme.Global'}" loading="lazy">
+        </div>
       </div>
-      <div class="finder-cta">
-        <a href="{$urls.pages.scent_finder}" class="btn btn-secondary">{l s='Take the Full Scent Quiz' d='Shop.Theme.Homepage'}</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  {* Testimonials *}
-  <section id="testimonials" class="testimonials-section">
-    <div class="container">
-      <h2>{l s='What Our Community Says' d='Shop.Theme.Homepage'}</h2>
-      <div class="testimonial-grid">
-        {include file='module:ps_testimonials/views/templates/hook/testimonials.tpl'}
-      </div>
-    </div>
-  </section>
+    {* Featured Products *}
+    {hook h='displayFeaturedProducts'}
 
-  {* Newsletter *}
-  {block name='newsletter'}
-    {include file='_partials/newsletter.tpl'}
-  {/block}
+    {* Scent Finder Section *}
+    <section class="finder-section">
+      <div class="container">
+        <h2>{l s='Find Your Perfect Scent' d='Shop.Theme.Global'}</h2>
+        <p class="finder-subtitle">{l s='Not sure where to start? Let us help you discover the perfect aromatherapy products for your needs.' d='Shop.Theme.Global'}</p>
+        
+        <div class="finder-grid">
+          <div class="finder-card">
+            <i class="far fa-heart finder-icon"></i>
+            <h3>{l s='For Relaxation' d='Shop.Theme.Global'}</h3>
+            <p>{l s='Calming scents for stress relief and relaxation' d='Shop.Theme.Global'}</p>
+          </div>
+          <div class="finder-card">
+            <i class="fas fa-spa finder-icon"></i>
+            <h3>{l s='For Wellness' d='Shop.Theme.Global'}</h3>
+            <p>{l s='Supporting your health and well-being naturally' d='Shop.Theme.Global'}</p>
+          </div>
+          <div class="finder-card">
+            <i class="far fa-sun finder-icon"></i>
+            <h3>{l s='For Energy' d='Shop.Theme.Global'}</h3>
+            <p>{l s='Invigorating scents to boost your energy' d='Shop.Theme.Global'}</p>
+          </div>
+          <div class="finder-card">
+            <i class="fas fa-home finder-icon"></i>
+            <h3>{l s='For Home' d='Shop.Theme.Global'}</h3>
+            <p>{l s='Create your perfect atmosphere at home' d='Shop.Theme.Global'}</p>
+          </div>
+        </div>
+
+        <div class="finder-cta">
+          <a href="{$urls.pages.scent_finder}" class="btn btn-secondary">
+            {l s='Take The Quiz' d='Shop.Theme.Global'}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {* Testimonials *}
+    {hook h='displayTestimonials'}
+
+    {* Newsletter Section *}
+    {hook h='displayNewsletterSubscription'}
+  </section>
 {/block}

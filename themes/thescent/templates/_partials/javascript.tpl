@@ -1,24 +1,39 @@
-{if $javascript.external|count}
-  {foreach from=$javascript.external item=js}
-    <script type="text/javascript" src="{$js.uri}" {$js.attribute}></script>
-  {/foreach}
-{/if}
+{* Core scripts that should load first *}
+{foreach $javascript.external as $js}
+  <script src="{$js.uri}" {$js.attribute}></script>
+{/foreach}
 
-{if $javascript.inline|count}
-  {foreach from=$javascript.inline item=js}
-    <script type="text/javascript">
-      {$js.content nofilter}
-    </script>
-  {/foreach}
-{/if}
-
-{if isset($vars) && $vars|@count}
-  <script type="text/javascript">
-    {foreach from=$vars key=var_name item=var_value}
-    var {$var_name} = {$var_value|json_encode nofilter};
-    {/foreach}
+{foreach $javascript.inline as $js}
+  <script>
+    {$js.content nofilter}
   </script>
+{/foreach}
+
+{if isset($javascript.custom)}
+  {foreach $javascript.custom as $js}
+    <script src="{$js.uri}" {$js.attribute}></script>
+  {/foreach}
 {/if}
+
+{* Initialize prestashop object with theme settings *}
+<script>
+  var prestashop = {ldelim}
+    ...{$prestashop|json_encode nofilter},
+    theme: {ldelim}
+      breakpoints: {ldelim}
+        tablet: 992,
+        mobile: 576
+      {rdelim}
+    {rdelim}
+  {rdelim};
+</script>
+
+{* Theme initialization *}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    new TheScentTheme();
+  });
+</script>
 
 {* Core JavaScript *}
 {$javascript_header nofilter}

@@ -2,18 +2,12 @@
 
 {block name='page_content_container'}
   <section id="content" class="page-content page-order-confirmation">
-    <div class="order-confirmation-header">
-      <i class="fas fa-check-circle confirmation-icon"></i>
-      <h3>{l s='Your order is confirmed' d='Shop.Theme.Checkout'}</h3>
-      <p>
-        {l s='An email has been sent to your mail address %email%.' d='Shop.Theme.Checkout' sprintf=['%email%' => $customer.email]}
-      </p>
-    </div>
-
     <div class="order-confirmation-content">
-      {block name='order_confirmation_table'}
-        {include file='checkout/_partials/order-confirmation-table.tpl'}
-      {/block}
+      <div class="confirmation-header">
+        <i class="fas fa-check-circle"></i>
+        <h1>{l s='Thank You for Your Order!' d='Shop.Theme.Checkout'}</h1>
+        <p>{l s='Your order has been successfully placed.' d='Shop.Theme.Checkout'}</p>
+      </div>
 
       <div class="order-details-cards">
         <div class="details-card">

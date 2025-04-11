@@ -447,3 +447,35 @@ const thescent = {
 
 // Export for module usage if needed
 export default thescent;
+
+/**
+ * PrestaShop Theme Core JS
+ */
+$(document).ready(function() {
+  // Initialize core components
+  prestashop.thescent = {
+    init: function() {
+      this.initTopMenu();
+      this.initSearch();
+      this.initCart();
+    },
+
+    initTopMenu: function() {
+      $('.js-top-menu').find('[data-depth="0"]').hover(function() {
+        $(this).addClass('sfHover');
+      }, function() {
+        $(this).removeClass('sfHover');
+      });
+    },
+
+    initSearch: function() {
+      // Search functionality
+    },
+
+    initCart: function() {
+      // Cart functionality  
+    }
+  };
+
+  prestashop.thescent.init();
+});

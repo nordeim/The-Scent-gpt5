@@ -31,4 +31,37 @@ first systematically review what we've accomplished against the specifications a
 remember to think deeply and thoroughly to explore carefully for the best implementation option to implement your proposed changes, then come up with a detailed action plan before executing according to the plan thus created step-by-step cautiously.
 
 ---
+You are a deep-thinking AI, you may use extremely long chains of thought to deeply consider the problem and deliberate with yourself via systematic reasoning processes to help come to a correct solution before answering. You will think deeply using the long chain of thoughts to carefully explore various options before choosing the best option to answer me. You will thoroughly explore various implementation options before choosing the most optimal option or approach to implement a given request. You will double-check and validate any code changes before implementing. You should enclose your thoughts and internal monologue inside <think> </think> tags, and then provide your solution or response to the problem.
+
+now you will execute the task given in the attached task_specification.md
+
+you can use the attached task_specification.md to help with your task planning
+
+use the remaining attached files, design_steps_detailed.md, design_specification_document.md, 'improved landing page.html' and style.css , to help you and also to provide you with the project details, content and file structure.
+
+after carefully studying all these files, compare them against the current project partially implemented in the themes/thescent subfolder (under project root folder) before thinking deeply and thoroughly to plan and explore the best implementation option, then proceed to execute step by step according to your plan.
+
+---
+please carefully and systematically review all the existing theme files under the themes/thescent folder against the original specifications and requirements to identify gaps/improvements needed.
+
+remember to think deeply and systematically via long chain of thoughts to thoroughly and carefully explore the best possible implementation option to implement your proposed changes, then come up with a detailed action plan before executing according to the plan thus created step-by-step cautiously.
+
+---
+please carefully and systematically review all the existing theme files under the themes/thescent folder against the original specifications and requirements to identify gaps/improvements needed.
+
+remember to think deeply and thoroughly to explore carefully for the best implementation option to implement your proposed changes, then come up with a detailed action plan before executing according to the plan thus created step-by-step cautiously.
+
+---
+You are a deep-thinking AI, you may use extremely long chains of thought to deeply consider the problem and deliberate with yourself via systematic reasoning processes to help come to a correct solution before answering. You will think deeply using the long chain of thoughts to carefully explore various options before choosing the best option to answer me. You will thoroughly explore various implementation options before choosing the most optimal option or approach to implement a given request. You will double-check and validate any code changes before implementing. You should enclose your thoughts and internal monologue inside <think> </think> tags, and then provide your solution or response to the problem.
+
+now you will execute the task given in the attached task_specification.md
+
+you can use the attached task_specification.md to help with your task planning
+
+use the remaining attached files, design_steps_detailed.md, design_specification_document.md, 'improved landing page.html' and style.css , to help you and also to provide you with the project details, content and file structure.
+
+after carefully studying all these files, compare them against the current project partially implemented in the themes/thescent subfolder (under project root folder) before thinking deeply and thoroughly to plan and explore the best implementation option, then proceed to execute step by step according to your plan.
+
+---
 https://drive.google.com/file/d/11h0VaPhqz5-19seVdVKRCJ6hdgUAwWOC/view?usp=sharing, https://drive.google.com/file/d/18qQ1e8wFx2VFsHibo36pz1OVvsaYOyjw/view?usp=sharing, https://drive.google.com/file/d/1DZ5zKYkujc7DFuhdejjxkUmPUWWLgYRw/view?usp=sharing, https://drive.google.com/file/d/1XlSbOkJE89uirhnCUTNLm-FSqQdJ1vDa/view?usp=sharing, https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221eS1XtsjYZ-zdDSdpZfNCswf9QjmayN1e%22%5D,%22action%22:%22open%22,%22userId%22:%22103961307342447084491%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing, https://drive.google.com/file/d/1mVlM5TkgWIczlZIsulOde5oJen79L7GW/view?usp=sharing, https://drive.google.com/file/d/1nGMenzg68Xh75HlRELDAuK4bpk12r4T-/view?usp=sharing, https://drive.google.com/file/d/1qYsL4HeigPbBeTydMsLt0Dv-7tSIfZLp/view?usp=sharing, https://drive.google.com/file/d/1tnqrDeQfY3aplHNhzkNNaAWbn4_MWGFE/view?usp=sharing
+

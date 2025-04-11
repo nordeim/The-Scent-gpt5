@@ -1,32 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Enhanced Sticky Header
+  // Sticky Header
   const header = document.querySelector('.main-header');
   let lastScroll = 0;
-  let scrollThreshold = 50;
-
+  
   function handleScroll() {
     const currentScroll = window.pageYOffset;
-    
-    // Show/hide header based on scroll direction
-    if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
-      header.classList.add('hide');
-      header.classList.remove('show');
-    } else {
-      header.classList.remove('hide');
-      header.classList.add('show');
-    }
-    
-    // Add/remove sticky class
-    if (currentScroll > scrollThreshold) {
+    if (currentScroll > 50) {
       header.classList.add('sticky');
     } else {
       header.classList.remove('sticky');
     }
-
     lastScroll = currentScroll;
   }
 
   window.addEventListener('scroll', handleScroll);
+
+  // Mobile Menu Toggle
+  const toggleButton = document.querySelector('.mobile-nav-toggle');
+  const mobileNav = document.querySelector('.mobile-nav');
+  
+  if (toggleButton && mobileNav) {
+    toggleButton.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+      header.classList.toggle('nav-open');
+    });
+  }
 
   // Loading State Handler
   function addLoadingState(button) {
@@ -58,8 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Enhanced Mobile Menu
-  const toggleButton = document.querySelector('.mobile-nav-toggle');
-  const mobileNav = document.querySelector('.mobile-nav');
   const mainHeader = document.querySelector('.main-header');
 
   if (toggleButton && mobileNav && mainHeader) {
@@ -95,4 +91,46 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
+  // Scent Finder Handler
+  document.querySelectorAll('.finder-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const category = this.dataset.category;
+      if (category) {
+        window.location.href = `${prestashop.urls.base_url}category/${category}`;
+      }
+    });
+  });
+
+  // Add smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Add intersection observer for scroll animations
+  const animateOnScroll = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
+  };
+
+  // Initialize animations
+  animateOnScroll();
 });

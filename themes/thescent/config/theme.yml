@@ -3,8 +3,11 @@ display_name: The Scent Theme
 version: 1.0.0
 author:
   name: "The Scent"
-  email: "contact@thescent.com"
+  email: ""
   url: ""
+
+parent: classic
+template_dir: templates
 
 meta:
   compatibility:
@@ -22,27 +25,26 @@ meta:
       description: A small right column ideal for filters or banners
 
 assets:
-  use_parent_assets: false
+  use_parent_assets: false  # Important: disable parent theme assets
   css:
     all:
-      - id: theme-core-css
-        path: assets/css/theme.css
-        media: all
-        priority: 10
-      - id: theme-custom-css
+      - id: theme-main-style
         path: assets/css/custom.css
         media: all
-        priority: 20
+        priority: 100
   js:
     all:
-      - id: theme-custom-js
+      - id: theme-main-js
         path: assets/js/custom.js
-        priority: 200
         position: bottom
-      - id: theme-core-js
-        path: assets/js/theme.js
         priority: 100
-        position: bottom
+      
+  # Add required fonts and icons
+  external_css:
+    - rel: stylesheet
+      href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500&family=Raleway:wght@400;500;600&display=swap"
+    - rel: stylesheet
+      href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 
 global_settings:
   hooks:
@@ -50,7 +52,7 @@ global_settings:
       displayNavFullWidth:
         - ps_mainmenu
       displayTop:
-        - ps_customersignin
+        - ps_mainmenu
         - ps_searchbar
       displayHeader:
         - ps_shoppingcart
@@ -58,11 +60,20 @@ global_settings:
         - ps_featuredproducts
       displayFooter:
         - ps_linklist
-        - ps_contactinfo
         - ps_customeraccountlinks
+        - ps_contactinfo
+      displayNav1:
+        - ps_contactinfo
+      displayNav2:
+        - ps_customersignin
       displayFooterBefore:
         - ps_emailsubscription
-
+      displayLeftColumn:
+        - ps_categorytree
+        - ps_facetedsearch
+      displayFooterAfter:
+        - ps_socialfollow
+      
   image_types:
     cart_default:
       width: 125
@@ -92,6 +103,14 @@ global_settings:
       width: 170
       height: 115
       scope: [stores]
+    hero_default:
+      width: 1920
+      height: 1080
+      scope: [categories, manufacturers, suppliers]
+    about_default:
+      width: 800
+      height: 600
+      scope: [categories]
 
 theme_settings:
   default_layout: layout-full-width
@@ -107,3 +126,6 @@ dependencies:
     - ps_linklist
     - ps_contactinfo
     - ps_customeraccountlinks
+    - ps_socialfollow
+    - ps_categorytree
+    - ps_facetedsearch

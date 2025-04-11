@@ -42,6 +42,13 @@ use the remaining attached files, design_steps_detailed.md, design_specification
 after carefully studying all these files, compare them against the current project partially implemented in the themes/thescent subfolder (under project root folder) before thinking deeply and thoroughly to plan and explore the best implementation option, then proceed to execute step by step according to your plan.
 
 ---
+please carefully review your changes and also review the current state of the project files in the themes/thescent folder and compare all these (current state) against the sample (improved) landing page design and the design specifications given in the design documents shared earlier, then think deeply and systematically to explore carefully the progress and changes made so far and document all these findings in a markdown format with filename "progress_update_document.md" under the project root folder. be very precise and detailed in documenting the details of progress and changes made so far.
+
+please carefully and systematically review all the existing theme files under the themes/thescent folder against the original specifications and requirements to identify gaps/improvements needed. add any coding and logic errors as suggestions for improving in the progress_update_document.md file.
+
+remember to think deeply and systematically via long chain of thoughts to thoroughly and carefully explore the best possible implementation option to implement your proposed changes, then come up with a detailed action plan before executing according to the plan thus created step-by-step cautiously.
+
+---
 please carefully and systematically review all the existing theme files under the themes/thescent folder against the original specifications and requirements to identify gaps/improvements needed.
 
 remember to think deeply and systematically via long chain of thoughts to thoroughly and carefully explore the best possible implementation option to implement your proposed changes, then come up with a detailed action plan before executing according to the plan thus created step-by-step cautiously.
@@ -71,6 +78,16 @@ you can use the attached task_specification.md to help with your task planning
 use the remaining attached files, design_steps_detailed.md, design_specification_document.md, 'improved landing page.html' and style.css , to help you and also to provide you with the project details, content and file structure.
 
 after carefully studying all these files, compare them against the current project partially implemented in the themes/thescent subfolder (under project root folder) before thinking deeply and thoroughly to plan and explore the best implementation option, then proceed to execute step by step according to your plan.
+
+---
+please carefully review your changes and also review the current state of the project files in the themes/thescent folder and compare all these (current state) against the sample (improved) landing page design and the design specifications given in the design documents shared earlier, then think deeply and systematically to explore carefully the progress and changes made so far and document all these findings in a markdown format with filename "progress_update_document.md" under the project root folder. be very precise and detailed in documenting the details of progress and changes made so far.
+
+please carefully and systematically review all the existing theme files under the themes/thescent folder against the original specifications and requirements to identify gaps/improvements needed. add any coding and logic errors as suggestions for improving in the progress_update_document.md file.
+
+remember to think deeply and systematically via long chain of thoughts to thoroughly and carefully explore the best possible implementation option to implement your proposed changes, then come up with a detailed action plan before executing according to the plan thus created step-by-step cautiously.
+
+---
+based on thorough and careful review of the current project files under the themes/thescent folder, then think deeply and thoroughly to explore the best (optimal) option or way to create a detailed design specification document in markdown format and with filename "current_design_specification_document.md" under the project root folder.
 
 ---
 https://drive.google.com/file/d/11h0VaPhqz5-19seVdVKRCJ6hdgUAwWOC/view?usp=sharing, https://drive.google.com/file/d/18qQ1e8wFx2VFsHibo36pz1OVvsaYOyjw/view?usp=sharing, https://drive.google.com/file/d/1DZ5zKYkujc7DFuhdejjxkUmPUWWLgYRw/view?usp=sharing, https://drive.google.com/file/d/1XlSbOkJE89uirhnCUTNLm-FSqQdJ1vDa/view?usp=sharing, https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%221eS1XtsjYZ-zdDSdpZfNCswf9QjmayN1e%22%5D,%22action%22:%22open%22,%22userId%22:%22103961307342447084491%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing, https://drive.google.com/file/d/1mVlM5TkgWIczlZIsulOde5oJen79L7GW/view?usp=sharing, https://drive.google.com/file/d/1nGMenzg68Xh75HlRELDAuK4bpk12r4T-/view?usp=sharing, https://drive.google.com/file/d/1qYsL4HeigPbBeTydMsLt0Dv-7tSIfZLp/view?usp=sharing, https://drive.google.com/file/d/1tnqrDeQfY3aplHNhzkNNaAWbn4_MWGFE/view?usp=sharing

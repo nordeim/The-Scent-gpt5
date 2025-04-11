@@ -36,4 +36,5 @@
       {hook h='displayMobileMenu'}
     </nav>
   </header>
+  {include file='_partials/search-overlay.tpl'}
 {/block}

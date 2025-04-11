@@ -8,7 +8,7 @@
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition: all var(--transition-speed) ease;
+  transition: all 0.3s ease;
 }
 
 .search-overlay.active {
@@ -27,17 +27,17 @@
 
 .search-input {
   width: 100%;
-  padding: calc(var(--spacing-unit) * 1.5);
+  padding: 1.5rem;
   font-size: 1.5rem;
   border: none;
   border-bottom: 2px solid var(--color-border);
   background: transparent;
-  transition: border-color var(--transition-speed) ease;
+  transition: border-color 0.3s ease;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--color-accent);
 }
 
 .close-search {
@@ -47,7 +47,7 @@
   font-size: 2rem;
   color: var(--color-primary);
   cursor: pointer;
-  transition: transform var(--transition-speed) ease;
+  transition: transform 0.3s ease;
 }
 
 .close-search:hover {

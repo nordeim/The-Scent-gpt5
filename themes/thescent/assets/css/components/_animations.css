@@ -15,6 +15,15 @@
   }
 }
 
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 /* Skeleton Loading */
 .skeleton {
   background: linear-gradient(90deg, 
@@ -27,10 +36,19 @@
   border-radius: 4px;
 }
 
+/* Mobile Menu Animation */
+.mobile-nav {
+  transition: transform 0.3s ease-in-out;
+}
+
+.mobile-nav.active {
+  animation: slideIn 0.3s forwards;
+}
+
 /* Transitions */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity var(--transition-speed) ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter,

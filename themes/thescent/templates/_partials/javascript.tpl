@@ -21,6 +21,8 @@
 {/if}
 
 {* Core JavaScript *}
+{$javascript_header nofilter}
+
 <script src="{$urls.theme_assets}js/custom.js"></script>
 
 {* Additional Components *}
@@ -41,4 +43,5 @@
   };
 </script>
 
-{* Any additional scripts or configurations *}
+{* Footer JavaScript *}
+{$javascript_footer nofilter}

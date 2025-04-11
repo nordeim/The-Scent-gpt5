@@ -270,4 +270,57 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Form Validation and Loading States
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      if (form.classList.contains('newsletter-form')) {
+        e.preventDefault();
+        const button = form.querySelector('button[type="submit"]');
+        const email = form.querySelector('input[type="email"]');
+        
+        if (!validateEmail(email.value)) {
+          showFormMessage(form, 'Please enter a valid email address', 'error');
+          return;
+        }
+        
+        button.classList.add('loading');
+        
+        try {
+          await submitNewsletterForm(email.value);
+          showFormMessage(form, 'Successfully subscribed!', 'success');
+          email.value = '';
+        } catch (error) {
+          showFormMessage(form, 'An error occurred. Please try again.', 'error');
+        } finally {
+          button.classList.remove('loading');
+        }
+      }
+    });
+  });
+
+  // Helper Functions
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function showFormMessage(form, message, type) {
+    const existingMessage = form.querySelector('.form-message');
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('form-message', `form-message-${type}`);
+    messageDiv.textContent = message;
+    form.appendChild(messageDiv);
+
+    setTimeout(() => messageDiv.remove(), 5000);
+  }
+
+  async function submitNewsletterForm(email) {
+    // Simulate API call - replace with actual API endpoint
+    return new Promise((resolve) => setTimeout(resolve, 1000));
+  }
+
 });
